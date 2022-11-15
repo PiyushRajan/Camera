@@ -31,7 +31,7 @@ const App = () => {
       } else if (res.errorCode) {
         toast('error while open camera', res.errorCode);
       } else {
-        setState({photo: res.uri});
+        setState({photo: res.assets[0].uri});
       }
     });
   };
@@ -43,14 +43,14 @@ const App = () => {
       } else if (res.errorCode) {
         toast('error while open camera', res.errorCode);
       } else {
-        setState({photo: res.uri});
+        setState({photo: res.assets[0].uri});
       }
     });
   };
 
   return (
     <View style={styles.container}>
-      {state.photo === '' ? (
+      {state.photo == '' ? (
         <Text>No Image</Text>
       ) : (
         <Image source={{uri: state.photo}} style={styles.image} />
